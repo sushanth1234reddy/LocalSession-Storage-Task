@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: rgb(223, 223, 165);
+            text-align: center;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Input Form</legend>
+        <form id="myf">
+            <span>Local Storage Input</span><br><br>
+            <label for="fname">FirstName:</label>
+            <input type="text" id="fname" placeholder="enter first name"><br><br>
+            <label for="lname">LastName:</label>
+            <input type="text" id="lname" placeholder="enter last name"> 
+            <br><br>
+            <span>Local storage data is:</span>
+            <br>
+             <p id="local1"></p>
+             <p id="local2"></p>
+             <br><br>
+             <span>Session Storage Input</span><br><br>
+             <label for="one">Age:</label>
+             <input type="number" placeholder="enter age" id="age"><br><br>
+             <label for="mnum">Mobile No:</label>
+             <input type="tel" id="mobile" placeholder="enter mobile number">
+             <br><br>
+             <span>Session Storage data is:</span><br>
+             <p id="session1"></p>
+             <p id="session2"></p>
+             <br>
+             <input type="submit">
+
+             <script>
+                let myf=document.getElementById("myf");
+                myf.addEventListener("submit",(e)=>{
+                    e.preventDefault();
+                    //Local Storage
+                    let fname=document.getElementById("fname");
+                    let lname=document.getElementById("lname");
+                    localStorage.setItem("FirstName",fname.value);
+                    localStorage.setItem("LastName",lname.value);
+                    let r1=document.getElementById("local1");
+                    let r2=document.getElementById("local2");
+
+                    let a=localStorage.getItem("FirstName");
+                    let b=localStorage.getItem("LastName");
+                    r1.innerHTML=`First Name: ${a}`;
+                    r2.innerHTML=`Last Name: ${b}`;
+                    
+                    //session storage
+                    let age=document.getElementById("age");
+                    let number=document.getElementById("mobile");
+
+                    sessionStorage.setItem("Age",age.value);
+                    sessionStorage.setItem("MobileNumber",number.value);
+
+                    let s1=document.getElementById("session1");
+                    let s2=document.getElementById("session2");
+
+                    let c=sessionStorage.getItem("Age");
+                    let d=sessionStorage.getItem("MobileNumber");
+
+                    s1.innerHTML=`Age is: ${c}`;
+                    s2.innerHTML=`Mobile Number: ${d}`;
+
+                })
+             </script>
+
+         </form>
+    </fieldset>
+</body>
+</html>
